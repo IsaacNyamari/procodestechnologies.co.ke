@@ -1,9 +1,16 @@
 <?php
+include("../includes/db.php");
+$courses = new GetCourses();
 if (isset($_GET['course']) && $_GET['course'] !== "") {
-        
+    $course =  $_GET['course']; 
     $title = ucfirst($_GET['course']) . " Development";
+    $coursesResult = $courses->getCourses("$course");
+    var_dump($coursesResult);
 } else {
     $title = 'Courses ';
+    $course =  "all"; 
+    $coursesResult = $courses->getCourses("$course");
+    var_dump($coursesResult);
 }
 ?>
 <!DOCTYPE html>
