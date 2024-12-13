@@ -159,14 +159,14 @@
                                         adipisicing elit. Inventore quaerat adipisci
                                         possimus odio, amet repellat est!</p>
                                     <span class="price mb-2 d-block text-danger fw-bold">Ksh. 30,000/=</span>
-                                    <a href="/courses/?course=frontend" class="btn btn-danger btn-lg w-100">Enroll</a>
+                                    <a href="/courses/?course=front" class="btn btn-danger btn-lg w-100">Enroll</a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
                             <div class="bg-light text-dark course-item shadow-sm rounded">
                                 <div class="course course-img">
-                                    <img src="/uploads/back-end.png" alt="Frontend Development" class="img-fluid rounded-top">
+                                    <img src="/uploads/back-end.png" alt="Backend Development" class="img-fluid rounded-top">
                                 </div>
                                 <div class="course course-desc p-4">
                                     <h4 class="text-center">Backend Development</h4>
@@ -174,7 +174,7 @@
                                         adipisicing elit. Inventore quaerat adipisci
                                         possimus odio, amet repellat est!</p>
                                     <span class="price mb-2 d-block text-danger fw-bold">Ksh. 35,000/=</span>
-                                    <a href="/courses/?course=backend" class="btn btn-danger btn-lg w-100">Enroll</a>
+                                    <a href="/courses/?course=back" class="btn btn-danger btn-lg w-100">Enroll</a>
                                 </div>
                             </div>
                         </div>
@@ -189,7 +189,7 @@
                                         adipisicing elit. Inventore quaerat adipisci
                                         possimus odio, amet repellat est!</p>
                                     <span class="price mb-2 d-block text-danger fw-bold">Ksh. 30,000/=</span>
-                                    <a href="/courses/?course=fullstack" class="btn btn-danger btn-lg w-100">Enroll</a>
+                                    <a href="/courses/?course=full" class="btn btn-danger btn-lg w-100">Enroll</a>
                                 </div>
                             </div>
                         </div>
