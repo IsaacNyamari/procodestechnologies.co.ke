@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{subject}}</title>
+    <style>
+        body {
+            margin: 0;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .container {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            align-content: center;
+            align-items: center;
+            text-align: center;
+            display: flex;
+            z-index: 9999;
+        }
+
+        .app {
+            margin: auto;
+            width: 50%;
+            height: fit-content;
+            border-right: 1px solid rgb(73, 158, 255);
+            border-left: 1px solid rgb(73, 158, 255);
+            border-radius: 15px;
+            background-color: #fff;
+        }
+
+        .app-header {
+            height: 50px;
+            align-content: center;
+            text-align: left;
+            padding-left: 20px;
+            background-color: rgb(73, 158, 255);
+            border-radius: 15px 15px 0 0;
+        }
+        
+        .app-body {
+            text-align: left;
+            height: fit-content;
+            margin-bottom: 15px;
+        }
+
+        .app-footer {
+            height: 50px;
+            align-content: center;
+            text-align: left;
+            padding-left: 20px;
+            background-color: rgb(73, 158, 255);
+            border-radius: 0 0 15px 15px;
+        }
+        @media (max-width:575px) {
+            .app{
+                width: 90%;
+            }
+        }
+        @media (min-width:576px) and (max-width:840px) {
+            .app{
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="app">
+            <div class="app-header">
+                {{subject}}
+            </div>
+            <div class="app-body">
+                <p class="from-names"><span>Names: {{names}}</span></p>
+                <p class="from-email">
+                    <span>Email: {{email}}</span>
+                </p>
+                <div class="message">
+                    <span>Message: {{message}}</span>
+                </div>
+            </div>
+            <div class="app-footer">
+                {{year}}
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
