@@ -312,3 +312,16 @@ color: #ffffff;
     object-fit: cover;
     margin: auto;
 }
+
+::-webkit-scrollbar{
+    background-color: #ff0000;
+    width: 8px;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-button{
+display: none;
+}
