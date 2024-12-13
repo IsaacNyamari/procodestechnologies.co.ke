@@ -1,3 +1,9 @@
+<?php
+include("./includes/db.php");
+$courses = new GetCourses();
+$get =  "all";
+$coursesResult = $courses->getCourses("$get");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -148,51 +154,21 @@
                 <h2 class="text-danger mb-5">Courses</h2>
                 <div class="container py-4">
                     <div class="row g-4">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="bg-light text-dark course-item shadow-sm rounded">
-                                <div class="course course-img">
-                                    <img src="/uploads/front-end.png" alt="Frontend Development" class="img-fluid rounded-top">
-                                </div>
-                                <div class="course course-desc p-4">
-                                    <h4 class="text-center">Frontend Development</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Inventore quaerat adipisci
-                                        possimus odio, amet repellat est!</p>
-                                    <span class="price mb-2 d-block text-danger fw-bold">Ksh. 30,000/=</span>
-                                    <a href="/courses/?course=front" class="btn btn-danger btn-lg w-100">Enroll</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="bg-light text-dark course-item shadow-sm rounded">
-                                <div class="course course-img">
-                                    <img src="/uploads/back-end.png" alt="Backend Development" class="img-fluid rounded-top">
-                                </div>
-                                <div class="course course-desc p-4">
-                                    <h4 class="text-center">Backend Development</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Inventore quaerat adipisci
-                                        possimus odio, amet repellat est!</p>
-                                    <span class="price mb-2 d-block text-danger fw-bold">Ksh. 35,000/=</span>
-                                    <a href="/courses/?course=back" class="btn btn-danger btn-lg w-100">Enroll</a>
+                        <?php foreach ($coursesResult as $course) { ?>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="bg-light text-dark course-item shadow-sm rounded">
+                                    <div class="course course-img">
+                                        <img src="<?php echo $course['poster'] ?>" alt="<?php echo $course['name'] ?>" class="img-fluid rounded-top">
+                                    </div>
+                                    <div class="course course-desc p-4">
+                                        <h4 class="text-center"><?php echo $course['name'] ?></h4>
+                                        <ul><?php echo $course['includes'] ?></ul>
+                                        <span class="price mb-2 d-block text-danger fw-bold">Kshs. <?php echo $course['course_fee'] ?>/=</span>
+                                        <a href="/courses/?course=<?php echo $course['name'] ?>&token=<?php echo $course['course_id'] ?>" class="btn btn-danger btn-lg">Enroll</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-lg-4">
-                            <div class="bg-light text-dark course-item shadow-sm rounded">
-                                <div class="course course-img">
-                                    <img src="/uploads/full-stack.jpg" alt="Frontend Development" class="img-fluid rounded-top">
-                                </div>
-                                <div class="course course-desc p-4">
-                                    <h4 class="text-center">Frontend Development</h4>
-                                    <p>Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit. Inventore quaerat adipisci
-                                        possimus odio, amet repellat est!</p>
-                                    <span class="price mb-2 d-block text-danger fw-bold">Ksh. 30,000/=</span>
-                                    <a href="/courses/?course=full" class="btn btn-danger btn-lg w-100">Enroll</a>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                         <!-- Add more course items here -->
                     </div>
                 </div>

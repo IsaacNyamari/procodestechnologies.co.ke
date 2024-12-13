@@ -16,7 +16,7 @@ class Dbh
 
 class GetCourses extends Dbh
 {
-    function getCourses(string $course = null)
+    function getCourses(string $course = null,string $token=null)
     {
         switch ($course) {
             case 'all':
@@ -24,7 +24,7 @@ class GetCourses extends Dbh
                 break;
 
             default:
-                $sql = "SELECT * FROM courses where `name` like '%$course%'";
+                $sql = "SELECT * FROM courses where `course_id`='$token'";
                 break;
         }
         $conn = $this->connect();

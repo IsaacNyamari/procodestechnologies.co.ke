@@ -1,16 +1,16 @@
 <?php
 include("../includes/db.php");
+$coursesResult="";
 $courses = new GetCourses();
 if (isset($_GET['course']) && $_GET['course'] !== "") {
-    $course =  $_GET['course']; 
-    $title = ucfirst($_GET['course']) . " Development";
-    $coursesResult = $courses->getCourses("$course");
-    var_dump($coursesResult);
+    $course =  $_GET['course'];
+    $token =  $_GET['token'];
+    $title = ucfirst($_GET['course']);
+    $coursesResult = $courses->getCourses("$course","$token");
 } else {
     $title = 'Courses ';
-    $course =  "all"; 
+    $course =  "all";
     $coursesResult = $courses->getCourses("$course");
-    var_dump($coursesResult);
 }
 ?>
 <!DOCTYPE html>
@@ -32,7 +32,50 @@ if (isset($_GET['course']) && $_GET['course'] !== "") {
     <?php
     include("../nav.php")
     ?>
+    <section>
+        <div class="container mb-5">
+            <div
+                class="row justify-content-between align-items-center m-1 g-1">
+                <h2 class="text-danger mb-5"><?php echo $title?></h2>
+                <div class="container  py-4">
+                    <div class="row g-4">
+                        <?php if($coursesResult){ foreach ($coursesResult as $course) { ?>
+                            
+                                <div class="text-dark bg-light course-item shadow-sm rounded mb-4 d-flex">
+                                    <div class="course w-50" style="width: 30%;">
+                                        <img src="<?php echo $course['poster'] ?>" alt="<?php echo $course['name'] ?>" class="img-fluid rounded-top">
+                                    </div>
+                                    <div class=" w-50 course course-desc p-4" style="width: 50%;">
+                                        <h4 class="text-start">What`s included in <?php echo $course['name'] ?></h4>
+                                        <ul><?php echo $course['includes'] ?></ul>
+                                        <span class="price mb-2 d-block text-danger fw-bold">Kshs. <?php echo $course['course_fee'] ?>/=</span>
+                                        <a href="/courses/?course=<?php echo $course['name']?>&token=<?php echo $course['course_id'] ?>" class="btn btn-danger btn-lg">Enroll</a>
+                                    </div>
+                                </div>
+                        <?php }} else{?>
+                            <div class="container">
+                            <h1>404</h1>
+                            <p>Oops! The page you're looking for doesn't exist.</p>
+                            <a href="/">Go Back to Homepage</a>
+                        </div>
+                          <?php  }?>
+                        <!-- Add more course items here -->
+                    </div>
+                </div>
 
-    <?php
+            </div>
 
-    echo bin2hex(random_bytes(30));
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2024 Pro Codes Technologies. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

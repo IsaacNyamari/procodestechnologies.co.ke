@@ -325,3 +325,9 @@ color: #ffffff;
 ::-webkit-scrollbar-button{
 display: none;
 }
+@media (max-width:576px) {
+    .course{
+        display: block;
+        width: 100%;
+    }
+}
