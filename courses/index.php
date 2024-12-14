@@ -2,9 +2,10 @@
 include("../includes/db.php");
 $coursesResult = "";
 $courses = new GetCourses();
-if (isset($_GET['course']) && $_GET['course'] !== "") {
+if (isset($_GET['course']) && $_GET['course'] !== "" && isset($_GET['token'])) {
+    $token = "";
     $course =  $_GET['course'];
-    $token =  isset($_GET['token']) ?? "";
+    $token =  $_GET['token'];
     $title = ucfirst($_GET['course']);
     $coursesResult = $courses->getCourses("$course", "$token");
 } else {
@@ -59,9 +60,9 @@ if (isset($_GET['course']) && $_GET['course'] !== "") {
                                 </div>
                             <?php }
                         } else { ?>
-                            <div class="" style="height: 70vh;">
-                                <h1 class="text-center text-danger">404</h1>
-                                <p class="text-center">Oops! The page you're looking for doesn't exist.</p>
+                            <div class="" style="height: 50vh; align-content:center;justify-content:center; align-items:center; display:flex;flex-direction:column">
+                                <h1 class="text-center text-danger" style="font-size: 200px;font-weight:900">404</h1>
+                                <p class="text-center" style="font-size: 30px;">Oops! The page you're looking for doesn't exist.</p>
                                 <a href="/" class="btn btn-danger text-center">Go Back to Homepage</a>
                             </div>
                         <?php  } ?>
