@@ -1,12 +1,12 @@
 <?php
 include("../includes/db.php");
-$coursesResult="";
+$coursesResult = "";
 $courses = new GetCourses();
 if (isset($_GET['course']) && $_GET['course'] !== "") {
     $course =  $_GET['course'];
-    $token =  $_GET['token'];
+    $token =  isset($_GET['token']) ?? "";
     $title = ucfirst($_GET['course']);
-    $coursesResult = $courses->getCourses("$course","$token");
+    $coursesResult = $courses->getCourses("$course", "$token");
 } else {
     $title = 'Courses ';
     $course =  "all";
@@ -29,6 +29,10 @@ if (isset($_GET['course']) && $_GET['course'] !== "") {
 </head>
 
 <body>
+    <div class="loader-container" id="loader-container">
+        <div class="loader"></div>
+    </div>
+
     <?php
     include("../nav.php")
     ?>
@@ -36,11 +40,12 @@ if (isset($_GET['course']) && $_GET['course'] !== "") {
         <div class="container mb-5">
             <div
                 class="row justify-content-between align-items-center m-1 g-1">
-                <h2 class="text-danger mb-5"><?php echo $title?></h2>
+                <h2 class="text-danger mb-5"><?php echo $title ?></h2>
                 <div class="container  py-4">
                     <div class="row g-4">
-                        <?php if($coursesResult){ foreach ($coursesResult as $course) { ?>
-                            
+                        <?php if ($coursesResult) {
+                            foreach ($coursesResult as $course) { ?>
+
                                 <div class="text-dark bg-light course-item shadow-sm rounded mb-4 d-flex">
                                     <div class="course w-50" style="width: 30%;">
                                         <img src="<?php echo $course['poster'] ?>" alt="<?php echo $course['name'] ?>" class="img-fluid rounded-top">
@@ -49,16 +54,17 @@ if (isset($_GET['course']) && $_GET['course'] !== "") {
                                         <h4 class="text-start">What`s included in <?php echo $course['name'] ?></h4>
                                         <ul><?php echo $course['includes'] ?></ul>
                                         <span class="price mb-2 d-block text-danger fw-bold">Kshs. <?php echo $course['course_fee'] ?>/=</span>
-                                        <a href="/courses/?course=<?php echo $course['name']?>&token=<?php echo $course['course_id'] ?>" class="btn btn-danger btn-lg">Enroll</a>
+                                        <a href="/courses/?course=<?php echo $course['name'] ?>&token=<?php echo $course['course_id'] ?>" class="btn btn-danger btn-lg">Enroll</a>
                                     </div>
                                 </div>
-                        <?php }} else{?>
-                            <div class="container">
-                            <h1>404</h1>
-                            <p>Oops! The page you're looking for doesn't exist.</p>
-                            <a href="/">Go Back to Homepage</a>
-                        </div>
-                          <?php  }?>
+                            <?php }
+                        } else { ?>
+                            <div class="" style="height: 70vh;">
+                                <h1 class="text-center text-danger">404</h1>
+                                <p class="text-center">Oops! The page you're looking for doesn't exist.</p>
+                                <a href="/" class="btn btn-danger text-center">Go Back to Homepage</a>
+                            </div>
+                        <?php  } ?>
                         <!-- Add more course items here -->
                     </div>
                 </div>
@@ -74,7 +80,7 @@ if (isset($_GET['course']) && $_GET['course'] !== "") {
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="../script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
