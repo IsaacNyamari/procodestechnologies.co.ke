@@ -3,7 +3,6 @@ include("../includes/db.php");
 $coursesResult = "";
 $courses = new GetCourses();
 if (isset($_GET['course']) && $_GET['course'] !== "" && isset($_GET['token'])) {
-    $token = "";
     $course =  $_GET['course'];
     $token =  $_GET['token'];
     $title = ucfirst($_GET['course']);
